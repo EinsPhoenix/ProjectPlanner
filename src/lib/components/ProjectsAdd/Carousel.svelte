@@ -2,7 +2,9 @@
     import { onMount, tick } from "svelte";
 
     export let initialItems: string[] = ["Start"];
+    export let title: string = "title";
     let items = initialItems;
+    let initialTitle = title;
 
     let carousel: HTMLElement;
     let currentIndex = 0;
@@ -80,24 +82,64 @@
     });
 </script>
 
-<div class="carousel-container" bind:this={carousel}>
-    <div class="carousel-item add-item" on:click={addItem}>Add Item</div>
-
-    {#each items as item, index (item)}
-        <div class="carousel-item" class:active={index === currentIndex}>
-            {item}
+<div class="main-container">
+    <div class="carousel-header">
+        <div class="header-content">
+            <div class="title">
+                <h1>{initialTitle}</h1>
+            </div>
+            <input type="text" class="search-bar" placeholder="Search" />
         </div>
-    {/each}
+    </div>
+
+    <div class="carousel-container" bind:this={carousel}>
+        <div class="carousel-item add-item" on:click={addItem}>Add Item</div>
+
+        {#each items as item, index (item)}
+            <div class="carousel-item" class:active={index === currentIndex}>
+                {item}
+            </div>
+        {/each}
+    </div>
 </div>
 
 <style>
+    .carousel-header {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 10px 4px;
+        width: 100%;
+    }
+
+    .header-content {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+        margin-right: auto;
+    }
+
+    .title h1 {
+        margin: 0;
+        text-align: left;
+        font-size: 24px;
+    }
+
+    .search-bar {
+        width: 300px;
+        padding: 5px;
+        font-size: 16px;
+        text-align: left;
+    }
+
     .carousel-container {
         display: flex;
-        width: 80vw;
+        width: 100vw;
         overflow: hidden;
         gap: 10px;
         scroll-snap-type: x mandatory;
-        padding: 20px 0;
+        padding: 20px 4px;
         scroll-behavior: smooth;
     }
 
@@ -128,5 +170,9 @@
 
     .carousel-item:hover {
         transform: scale(1.02);
+    }
+
+    .main-container {
+        width: 95vw;
     }
 </style>
