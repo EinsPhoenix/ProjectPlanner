@@ -6,18 +6,9 @@
 </script>
 
 <section>
-	<Carousel
-		initialItems={["Item 1", "Item 2", "Item 3"]}
-		title={"Projects"}
-	/>
-	<Carousel
-		initialItems={["Item 1", "Item 2", "Hahahah"]}
-		title={"Wichtige Projekte"}
-	/>
-	<Carousel
-		initialItems={["Item 1", "Item 2", "Item 3"]}
-		title={"Bald Auslaufend"}
-	/>
+	<Carousel initialItems={["Item 1", "Item 2", "Item 3"]} />
+	<Carousel initialItems={["Item 1", "Item 2", "Item 3"]} />
+	<Carousel initialItems={["Item 1", "Item 2", "Item 3"]} />
 	<Carousel initialItems={["Item 1", "Item 2", "Item 3"]} />
 </section>
 
@@ -25,8 +16,9 @@
 	section {
 		display: flex;
 		flex-direction: column;
-		justify-content: left;r;
+		justify-content: center;
 		align-items: center;
 		flex: 0.6;
+		gap: 10px;
 	}
 </style>

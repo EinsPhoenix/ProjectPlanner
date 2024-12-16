@@ -3,8 +3,10 @@
 
     export let initialItems: string[] = ["Start"];
     export let title: string = "title";
+    export let hasAddItem: boolean = true;
     let items = initialItems;
     let initialTitle = title;
+    let buttonAddItem = hasAddItem;
 
     let carousel: HTMLElement;
     let currentIndex = 0;
@@ -93,7 +95,11 @@
     </div>
 
     <div class="carousel-container" bind:this={carousel}>
-        <div class="carousel-item add-item" on:click={addItem}>Add Item</div>
+        {#if buttonAddItem == true}
+            <div class="carousel-item add-item" on:click={addItem}>
+                Add Item
+            </div>
+        {/if}
 
         {#each items as item, index (item)}
             <div class="carousel-item" class:active={index === currentIndex}>
@@ -108,7 +114,7 @@
         display: flex;
         justify-content: center;
         align-items: center;
-        padding: 10px 4px;
+        padding: 10px 20px;
         width: 100%;
     }
 
@@ -135,19 +141,20 @@
 
     .carousel-container {
         display: flex;
-        width: 100vw;
+        width: 92vw;
         overflow: hidden;
         gap: 10px;
         scroll-snap-type: x mandatory;
-        padding: 20px 4px;
+        padding: 10px 20px;
         scroll-behavior: smooth;
+        border-radius: 8px;
     }
 
     .carousel-item {
         flex: 0 0 400px;
         height: 150px;
-        background-color: #4caf50;
-        color: white;
+        background-color: #960101;
+        color: rgb(255, 255, 255);
         display: flex;
         justify-content: center;
         align-items: center;
@@ -164,7 +171,7 @@
     }
 
     .add-item {
-        background-color: #007bff;
+        background-color: #3d3d3d;
         cursor: pointer;
     }
 
@@ -174,5 +181,7 @@
 
     .main-container {
         width: 95vw;
+        background-color: #05050583;
+        border-radius: 8px;
     }
 </style>
